@@ -2,11 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send("Users home");
+  res.send("Users list");
+});
+
+router.get("/new", (req, res) => {
+  // rendered a from from static/views/users/new.ejs and then posted the data to the server.
+  res.render("users/new", {firstname: "your name here"});
 });
 
 router.post("/", (req, res) => {
-  res.send("User create");
+  console.log(req.body.firstname);
+  // show the data from previous submitted from
+  res.send(`User created with name ${req.body.firstname}`);
 });
 
 router

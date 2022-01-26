@@ -5,6 +5,8 @@ const app = express();
 // public is the naming convention for the folder where the static files are stored. but we can use anything we want.
 app.use(express.static('public'));
 
+// middleware for parsing the body of the request.
+app.use(express.urlencoded({extended: true}));
 // server running on port 3000
 app.listen(3000)
 
