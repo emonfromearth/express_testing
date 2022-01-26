@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 
-// everything runs from top to bottom. so logger function is called first and then the route is called.
-// we can use middleware in individual routes also. or we have to put the middleware below.
-app.use(logger);
+// // everything runs from top to bottom. so logger function is called first and then the route is called.
+// // we can use middleware in individual routes also. or we have to put the middleware below.
+// app.use(logger);
 
 // server running on port 3000
 app.listen(3000)
@@ -11,7 +11,9 @@ app.listen(3000)
 // Set the view engine to ejs
 app.set("view engine", "ejs");
 
-app.get('/', (req, res) => {
+// we can use middleware in individual routes also. and as many middleware as we want. 
+// as any many time the same middleware can be used also.
+app.get('/', logger, logger, logger, (req, res) => {
     console.log('Hello World');
     // default folder for ejs is views. then we define the file name i;e index.ejs. 
     // then pass the data to the ejs file like- {text: "from server.js"} using render method.
