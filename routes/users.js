@@ -2,7 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send("Users list");
+  // http://localhost:3000/users/?name=john do this format to get the query string from the url.
+  console.log(req.query);
+  console.log(req.query.name);
+  res.send(`User ${req.query.name}`);
 });
 
 router.get("/new", (req, res) => {
@@ -12,7 +15,7 @@ router.get("/new", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const isValid = false;
+  const isValid = true;
   if (isValid) {
     users.push({firstname: req.body.firstname});
     res.redirect(`/users/${users.length - 1}`);

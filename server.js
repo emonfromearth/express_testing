@@ -7,14 +7,17 @@ app.use(express.static('public'));
 
 // middleware for parsing the body of the request.
 app.use(express.urlencoded({extended: true}));
+
+// middleware for parsing the json data.
+app.use(express.json());
+
 // server running on port 3000
 app.listen(3000)
 
 // Set the view engine to ejs
 app.set("view engine", "ejs");
 
-// we can use middleware in individual routes also. and as many middleware as we want. 
-// as any many time the same middleware can be used also.
+// setting up the home view
 app.get('/', (req, res) => {
     console.log('Hello World');
     // default folder for ejs is views. then we define the file name i;e index.ejs. 
